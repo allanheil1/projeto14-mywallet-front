@@ -3,18 +3,14 @@ import styled from 'styled-components';
 export const NovoRegistroStyle = styled.div`
   width: 100%;
   height: 100vh;
-	display:flex;
+  display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  img{
-    height: 100px;
-    margin-bottom: -30px;
-  }
 
   input{
     height: 58px;
-    width: 326px;
+    width: 100%;
     margin-bottom: 13px;
     background: #FFFFFF;
     border: 1px solid #D5D5D5;
@@ -34,7 +30,7 @@ export const NovoRegistroStyle = styled.div`
     align-items: center;
     justify-content: center;
     height: 46px;
-    width: 326px;
+    width: 100%;
     border: none;
     border-radius: 5px;
     font-size: 20px;
@@ -50,7 +46,20 @@ export const NovoRegistroStyle = styled.div`
   }
 `
 
+export const HeaderStyle = styled.div`
+    width: 90%;
+    margin-top: 30px;
+    display: flex;
+    justify-content: flex-start;
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 26px;
+    color: white;
+`
+
 export const Form = styled.form`
+  width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;

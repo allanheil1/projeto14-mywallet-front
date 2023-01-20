@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useContext, useState } from "react";
 import axios from 'axios';
 
-import { NovoRegistroStyle, Form } from './style';
+import { NovoRegistroStyle, HeaderStyle, Form } from './style';
 import UserContext from '../../contexts/UserContext';
 
 export default function NovaSaida() {
@@ -37,6 +37,9 @@ export default function NovaSaida() {
 
     return (
       <NovoRegistroStyle>
+        <HeaderStyle>
+          Nova Saida
+        </HeaderStyle>
         <Form onSubmit={RegistrarNovaSaida}>
         <input 
             type='number' placeholder='Valor'

@@ -35,7 +35,7 @@ export default function HomePage() {
       <HomePageStyle>
         <HeaderStyleDiv>
             Olá, Fulano
-            <img src={exitIcon}/>
+            <img src={exitIcon} onClick={() => console.log('clicou')}/>
         </HeaderStyleDiv>
         <RegisterStyleDiv>
             Content registers
