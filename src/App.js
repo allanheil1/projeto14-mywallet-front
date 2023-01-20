@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import LoginPage from './pages/LoginPage/LoginPage';
 import SignUpPage from './pages/SignUpPage/SignUpPage';
+import HomePage from './pages/HomePage/HomePage';
 import GlobalStyle from './styles/globalStyle';
 import UserContext from './contexts/UserContext';
 
@@ -19,6 +20,7 @@ export default function App() {
           <Routes>
             <Route path='/' element={<LoginPage />}/>
             <Route path='/cadastro' element={<SignUpPage />}/>
+            <Route path='/home' element={<HomePage />}/>
           </Routes>
         </BrowserRouter>
       </UserContext.Provider>

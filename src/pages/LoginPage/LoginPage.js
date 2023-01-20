@@ -44,18 +44,16 @@ export default function LoginPage() {
             type='email' placeholder='E-mail'
             value={loginData.email} name='email'
             onChange={OnChange}  required disabled={isLoading}
-            data-test='email-input'
           />
           <input 
             type='password' placeholder='Senha'
             value={loginData.password} name='password'
             onChange={OnChange}  required disabled={isLoading}
-            data-test='password-input'
           />
-          <button type='submit' disabled={isLoading} data-test='login-btn'> Entrar </button>
+          <button type='submit' disabled={isLoading} > Entrar </button>
         </Form>
 
-        <Link to={isLoading ? '' : '/cadastro'} data-test='signup-link'>
+        <Link to={isLoading ? '' : '/cadastro'} >
           <Cadastre>
             Primeira vez? Cadastre-se!
           </Cadastre>
