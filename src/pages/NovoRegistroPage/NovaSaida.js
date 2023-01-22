@@ -8,20 +8,20 @@ import UserContext from '../../contexts/UserContext';
 export default function NovaSaida() {
 
     const navigate = useNavigate();
-    const { setToken } = useContext(UserContext);
+    const { token } = useContext(UserContext);
     const [isLoading, setIsLoading] = useState(false);
     const [novaSaida, setNovaSaida] = useState({
-      valor: '',
-      descricao: ''
+      value: '',
+      description: '',
+      mode: 'saida'
     });
 
     function RegistrarNovaSaida(e){
       e.preventDefault();
       setIsLoading(true);
-      const promise = axios.post('URLPOST', novaSaida);
+      const promise = axios.post('http://localhost:5000/register', novaSaida, { headers: { 'Authorization': `Bearer ${token}` }});
       promise.then((res) => {
         setIsLoading(false);
-        setToken(res.data.token);
         navigate('/home');
       });
       promise.catch((err) => {
@@ -43,12 +43,12 @@ export default function NovaSaida() {
         <Form onSubmit={RegistrarNovaSaida}>
         <input 
             type='number' placeholder='Valor'
-            value={novaSaida.valor} name='valor'
+            value={novaSaida.value} name='value'
             onChange={OnChange} required disabled={isLoading}
           />
           <input 
             placeholder='Descrição'
-            value={novaSaida.descricao} name='descricao'
+            value={novaSaida.description} name='description'
             onChange={OnChange} required disabled={isLoading}
           />
           <button type='submit' disabled={isLoading} > Salvar Saida </button>

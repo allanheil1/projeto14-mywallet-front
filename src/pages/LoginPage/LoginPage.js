@@ -19,10 +19,10 @@ export default function LoginPage() {
     function LoginAPI(e){
       e.preventDefault();
       setIsLoading(true);
-      const promise = axios.post('URLPOST', loginData);
+      const promise = axios.post('http://localhost:5000/login', loginData);
       promise.then((res) => {
         setIsLoading(false);
-        setToken(res.data.token);
+        setToken(res.data);
         navigate('/home');
       });
       promise.catch((err) => {

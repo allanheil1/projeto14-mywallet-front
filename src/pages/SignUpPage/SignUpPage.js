@@ -18,7 +18,8 @@ export default function SignUpPage() {
     function SignUpAPI(e){
       e.preventDefault();
       setIsLoading(true);
-      const promise = axios.post('URL POST', { ...signUpData });
+      console.log(signUpData)
+      const promise = axios.post('http://localhost:5000/signUp', { ...signUpData });
       promise.then(() => {
         setIsLoading(false);
         navigate('/');
@@ -57,7 +58,7 @@ export default function SignUpPage() {
             disabled={isLoading}
           />
           <input 
-            type='text' placeholder='Confirme a Senha'
+            type='password' placeholder='Confirme a Senha'
             value={signUpData.confirm} name='confirm'
             onChange={OnChange} required
             disabled={isLoading}
