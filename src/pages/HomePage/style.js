@@ -99,13 +99,13 @@ export const BalanceStyle = styled.div`
   margin-top: 15px;
   margin-bottom: 20px;
   margin-left: 10px;
+  font-weight: 700;
   h1{
-    font-size: 18px;
-    font-weight: 700;
+    font-size: 20px;
   }
   h2{
     color: ${props => props.balanceCalc ? 'green' : 'red'};
-    font-size: 18px;
+    font-size: 20px;
     margin-right: -13px;
   }
 `
