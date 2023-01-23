@@ -13,11 +13,12 @@ import UserContext from './contexts/UserContext';
 export default function App() {
 
   const [token, setToken] = useState(null);
+  const [user, setUser] = useState(null);
 
   return (
     <>
       <GlobalStyle />
-      <UserContext.Provider value={{ token, setToken }}>
+      <UserContext.Provider value={{ token, setToken, user, setUser }}>
         <BrowserRouter>
           <Routes>
             <Route path='/' element={<LoginPage />}/>

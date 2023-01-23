@@ -9,7 +9,7 @@ import UserContext from '../../contexts/UserContext';
 export default function LoginPage() {
 
     const navigate = useNavigate();
-    const { setToken } = useContext(UserContext);
+    const { setToken, setUser } = useContext(UserContext);
     const [isLoading, setIsLoading] = useState(false);
     const [loginData, setLoginData] = useState({
       email: '',
@@ -22,7 +22,8 @@ export default function LoginPage() {
       const promise = axios.post('http://localhost:5000/login', loginData);
       promise.then((res) => {
         setIsLoading(false);
-        setToken(res.data);
+        setToken(res.data.token);
+        setUser(res.data.user.name);
         navigate('/home');
       });
       promise.catch((err) => {

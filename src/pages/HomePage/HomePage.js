@@ -12,13 +12,12 @@ import iconnovasaida from '../../assets/iconnovasaida.png';
 export default function HomePage() {
 
     const navigate = useNavigate();
-    const { token } = useContext(UserContext);
+    const { token, user } = useContext(UserContext);
     const [isLoading, setIsLoading] = useState(false);
     const [emptyMessageView, SetEmptyMessageView] = useState(true);
     const [registers, setRegisters] = useState([]);
 
     useEffect(() => {
-      console.log('recarregando a pagina');
       BalanceCalculus();
       carregaRegistros();
     }, []);
@@ -54,15 +53,12 @@ export default function HomePage() {
     }
 
     const balance = BalanceCalculus();
-    console.log(balance);
-    console.log(balance > 0);
-    console.log(typeof(balance));
 
     if(registers.length === 0){
       return (
         <HomePageStyle>
         <HeaderStyleDiv>
-            Olá, Fulano
+            Olá, {user}
             <img src={exitIcon} onClick={() => console.log('clicou')}/>
         </HeaderStyleDiv>
         <RegisterStyleDiv>
@@ -85,7 +81,7 @@ export default function HomePage() {
     return (
       <HomePageStyle>
         <HeaderStyleDiv>
-            Olá, Fulano
+            Olá, {user}
             <img src={exitIcon} onClick={() => console.log('clicou')}/>
         </HeaderStyleDiv>
         <RegisterStyleDiv>
