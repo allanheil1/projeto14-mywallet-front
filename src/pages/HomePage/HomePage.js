@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useContext, useState, useEffect } from "react";
 import axios from 'axios';
 
@@ -57,7 +57,9 @@ export default function HomePage() {
         <HomePageStyle>
         <HeaderStyleDiv>
             Olá, {user}
-            <img src={exitIcon} onClick={() => console.log('clicou')}/>
+            <Link to='/'>
+              <img src={exitIcon}/>
+            </Link>
         </HeaderStyleDiv>
         <EmptyMessageStyle>
           <h1> Não há registros de entrada ou saída </h1>
@@ -80,7 +82,9 @@ export default function HomePage() {
       <HomePageStyle>
         <HeaderStyleDiv>
             Olá, {user}
-            <img src={exitIcon} onClick={() => console.log('clicou')}/>
+            <Link to='/'>
+              <img src={exitIcon}/>
+            </Link>
         </HeaderStyleDiv>
         <RegisterStyleDiv>
 
@@ -95,7 +99,7 @@ export default function HomePage() {
             ).reverse()}
 
             <BalanceStyle balanceCalc={balance >= 0}>
-              <h1>SALDO:</h1> <h2>{balance}</h2>
+              <h1>SALDO:</h1> <h2>R$ {balance}</h2>
             </BalanceStyle>
 
         </RegisterStyleDiv>

@@ -6,7 +6,7 @@ export default function Register({ registerValue, registerDescription, registerM
     return (
         <RegisterStyle mode={registerMode}>
             <h1> <span>{date}</span> {registerDescription} </h1>
-            <h2> {registerValue} </h2>
+            <h2> R$ {registerValue} </h2>
         </RegisterStyle>
     );
   }
