@@ -24,7 +24,7 @@ export const HeaderStyleDiv = styled.div`
 export const RegisterStyleDiv = styled.div`
   display: flex;
   flex-direction: column;
-  height: 446px;
+  height: 546px;
   width: 90%;
   background-color: #FFFFFF;
   border-radius: 5px;
