@@ -10,15 +10,20 @@ export default function SignUpPage() {
     const [signUpData, setSignUpData] = useState({
       email: '',
       name: '',
-      confirm: '',
+      confirmPass: '',
       password: ''
     });
     const [isLoading, setIsLoading] = useState(false);
 
     function SignUpAPI(e){
       e.preventDefault();
+
+      if(signUpData.password !== signUpData.confirmPass){
+        alert('Os campos de senha não batem! Por favor insira a mesma senha em ambos\n')
+        setSignUpData({ ...signUpData, password: '', confirmPass: ''});
+        return;
+      }
       setIsLoading(true);
-      console.log(signUpData)
       const promise = axios.post(process.env.REACT_APP_SIGNUP_URL, { ...signUpData });
       promise.then(() => {
         setIsLoading(false);
@@ -59,7 +64,7 @@ export default function SignUpPage() {
           />
           <input 
             type='password' placeholder='Confirme a Senha'
-            value={signUpData.confirm} name='confirm'
+            value={signUpData.confirmPass} name='confirmPass'
             onChange={OnChange} required
             disabled={isLoading}
           />
