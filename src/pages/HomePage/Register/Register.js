@@ -1,16 +1,12 @@
-import UserContext from '../../../contexts/UserContext';
-import { RegisterStyle, Box } from './style';
+import { RegisterStyle } from './style';
+import dayjs from 'dayjs';
 
 export default function Register({ registerValue, registerDescription, registerMode, registerDate }) {
-
+    const date = dayjs(registerDate).format('DD/MM');
     return (
-      <Box>
-        <RegisterStyle>
-            <h1> {registerValue} </h1>
-            <h2> {registerDescription} </h2>
-            <h3> {registerMode} </h3>
-            <h4> {registerDate} </h4>
+        <RegisterStyle mode={registerMode}>
+            <h1> <span>{date}</span> {registerDescription} </h1>
+            <h2> {registerValue} </h2>
         </RegisterStyle>
-      </Box>
     );
   }

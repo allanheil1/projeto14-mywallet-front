@@ -1,8 +1,8 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useContext, useState, useEffect } from "react";
 import axios from 'axios';
 
-import { HomePageStyle, HeaderStyleDiv, ButtonsStyleDiv, RegisterStyleDiv} from './style';
+import { HomePageStyle, BalanceStyle, HeaderStyleDiv, ButtonsStyleDiv, RegisterStyleDiv} from './style';
 import UserContext from '../../contexts/UserContext';
 import Register from '../HomePage/Register/Register';
 import exitIcon from '../../assets/exiticon.png';
@@ -18,8 +18,23 @@ export default function HomePage() {
     const [registers, setRegisters] = useState([]);
 
     useEffect(() => {
+      console.log('recarregando a pagina');
+      BalanceCalculus();
       carregaRegistros();
     }, []);
+
+    function BalanceCalculus() {
+      if (registers.length > 0) {
+        return registers.reduce((acc, curr) => {
+          if (curr.mode === 'entrada') {
+            return acc + curr.value;
+          }
+          return acc - curr.value;
+        }, 0);
+      } else {
+        return 0;
+      }
+    }
 
     function carregaRegistros(e){
       //e.preventDefault();
@@ -38,6 +53,35 @@ export default function HomePage() {
       })
     }
 
+    const balance = BalanceCalculus();
+    console.log(balance);
+    console.log(balance > 0);
+    console.log(typeof(balance));
+
+    if(registers.length === 0){
+      return (
+        <HomePageStyle>
+        <HeaderStyleDiv>
+            Olá, Fulano
+            <img src={exitIcon} onClick={() => console.log('clicou')}/>
+        </HeaderStyleDiv>
+        <RegisterStyleDiv>
+          <h3> Não há registros de entrada ou saída </h3>
+        </RegisterStyleDiv>
+        <ButtonsStyleDiv>
+            <button type='submit' disabled={isLoading} onClick={() => navigate('/nova-entrada')}> 
+                <img src={iconnovaentrada}/>
+                <h1> Nova Entrada </h1>
+            </button>
+            <button type='submit' disabled={isLoading} onClick={() => navigate('/nova-saida')}> 
+                <img src={iconnovasaida}/>
+                <h1> Nova Saída </h1>
+            </button>
+        </ButtonsStyleDiv>
+      </HomePageStyle>
+      );
+    }
+
     return (
       <HomePageStyle>
         <HeaderStyleDiv>
@@ -45,6 +89,7 @@ export default function HomePage() {
             <img src={exitIcon} onClick={() => console.log('clicou')}/>
         </HeaderStyleDiv>
         <RegisterStyleDiv>
+
             {registers.map((reg, _id) => 
               <Register
                 key={_id}
@@ -53,7 +98,12 @@ export default function HomePage() {
                 registerMode={reg.mode}
                 registerDate={reg.date}
               />
-            )}
+            ).reverse()}
+
+            <BalanceStyle balanceCalc={balance >= 0}>
+              <h1>SALDO:</h1> <h2>{balance}</h2>
+            </BalanceStyle>
+
         </RegisterStyleDiv>
         <ButtonsStyleDiv>
             <button type='submit' disabled={isLoading} onClick={() => navigate('/nova-entrada')}> 

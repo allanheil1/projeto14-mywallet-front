@@ -22,11 +22,15 @@ export const HeaderStyleDiv = styled.div`
 `
 
 export const RegisterStyleDiv = styled.div`
+  display: flex;
+  flex-direction: column;
   height: 446px;
   width: 90%;
   background-color: #FFFFFF;
   border-radius: 5px;
   margin-bottom: 15px;
+  overflow-y: scroll;
+  position: relative;
 `
 
 export const ButtonsStyleDiv = styled.div`
@@ -54,8 +58,8 @@ export const ButtonsStyleDiv = styled.div`
   }
 
   img{
-    height: 25px;
-    width: 22px;
+    height: 30px;
+    width: 30px;
     margin-top: 9px;
     margin-left: 7px
   }
@@ -66,5 +70,25 @@ export const ButtonsStyleDiv = styled.div`
     text-align: start;
     margin-left: 10px;
     margin-bottom: 9px;
+  }
+`
+
+export const BalanceStyle = styled.div`
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: flex-end;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  margin-left: 10px;
+  h1{
+    font-size: 18px;
+    font-weight: 700;
+  }
+  h2{
+    color: ${props => props.balanceCalc ? 'green' : 'red'};
+    font-size: 18px;
+    margin-right: -13px;
   }
 `
