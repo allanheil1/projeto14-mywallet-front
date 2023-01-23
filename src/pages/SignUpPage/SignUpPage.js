@@ -19,7 +19,7 @@ export default function SignUpPage() {
       e.preventDefault();
       setIsLoading(true);
       console.log(signUpData)
-      const promise = axios.post('http://localhost:5000/signUp', { ...signUpData });
+      const promise = axios.post(process.env.REACT_APP_SIGNUP_URL, { ...signUpData });
       promise.then(() => {
         setIsLoading(false);
         navigate('/');

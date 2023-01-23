@@ -20,7 +20,7 @@ export default function NovaEntrada() {
 
       e.preventDefault();
       setIsLoading(true);
-      const promise = axios.post('http://localhost:5000/register', novaEntrada, { headers: { 'Authorization': `Bearer ${token}` }});
+      const promise = axios.post(process.env.REACT_APP_REGISTER_URL, novaEntrada, { headers: { 'Authorization': `Bearer ${token}` }});
       promise.then((res) => {
         setIsLoading(false);
         navigate('/home');

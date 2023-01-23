@@ -19,7 +19,7 @@ export default function LoginPage() {
     function LoginAPI(e){
       e.preventDefault();
       setIsLoading(true);
-      const promise = axios.post('http://localhost:5000/login', loginData);
+      const promise = axios.post(process.env.REACT_APP_LOGIN_URL, loginData);
       promise.then((res) => {
         setIsLoading(false);
         setToken(res.data.token);

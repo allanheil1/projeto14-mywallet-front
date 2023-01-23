@@ -19,7 +19,7 @@ export default function NovaSaida() {
     function RegistrarNovaSaida(e){
       e.preventDefault();
       setIsLoading(true);
-      const promise = axios.post('http://localhost:5000/register', novaSaida, { headers: { 'Authorization': `Bearer ${token}` }});
+      const promise = axios.post(process.env.REACT_APP_REGISTER_URL, novaSaida, { headers: { 'Authorization': `Bearer ${token}` }});
       promise.then((res) => {
         setIsLoading(false);
         navigate('/home');

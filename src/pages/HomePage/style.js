@@ -33,6 +33,23 @@ export const RegisterStyleDiv = styled.div`
   position: relative;
 `
 
+export const EmptyMessageStyle = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 446px;
+  width: 90%;
+  background-color: #FFFFFF;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  color: #868686;
+  h1{
+    width: 180px;
+    font-size: 20px;
+    text-align: center;
+  }
+`
+
 export const ButtonsStyleDiv = styled.div`
   display: flex;
   width: 90%;

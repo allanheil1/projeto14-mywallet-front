@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useContext, useState, useEffect } from "react";
 import axios from 'axios';
 
-import { HomePageStyle, BalanceStyle, HeaderStyleDiv, ButtonsStyleDiv, RegisterStyleDiv} from './style';
+import { HomePageStyle, BalanceStyle, HeaderStyleDiv, ButtonsStyleDiv, RegisterStyleDiv, EmptyMessageStyle} from './style';
 import UserContext from '../../contexts/UserContext';
 import Register from '../HomePage/Register/Register';
 import exitIcon from '../../assets/exiticon.png';
@@ -14,7 +14,6 @@ export default function HomePage() {
     const navigate = useNavigate();
     const { token, user } = useContext(UserContext);
     const [isLoading, setIsLoading] = useState(false);
-    const [emptyMessageView, SetEmptyMessageView] = useState(true);
     const [registers, setRegisters] = useState([]);
 
     useEffect(() => {
@@ -38,10 +37,9 @@ export default function HomePage() {
     function carregaRegistros(e){
       //e.preventDefault();
       setIsLoading(true);
-      const promise = axios.get('http://localhost:5000/register', { headers: { 'Authorization': `Bearer ${token}` }});
+      const promise = axios.get(process.env.REACT_APP_REGISTER_URL, { headers: { 'Authorization': `Bearer ${token}` }});
       promise.then((res) => {
         setRegisters(res.data);
-        SetEmptyMessageView(false);
         setIsLoading(false);
         navigate('/home');
       });
@@ -61,9 +59,9 @@ export default function HomePage() {
             Olá, {user}
             <img src={exitIcon} onClick={() => console.log('clicou')}/>
         </HeaderStyleDiv>
-        <RegisterStyleDiv>
-          <h3> Não há registros de entrada ou saída </h3>
-        </RegisterStyleDiv>
+        <EmptyMessageStyle>
+          <h1> Não há registros de entrada ou saída </h1>
+        </EmptyMessageStyle>
         <ButtonsStyleDiv>
             <button type='submit' disabled={isLoading} onClick={() => navigate('/nova-entrada')}> 
                 <img src={iconnovaentrada}/>
